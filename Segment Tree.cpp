@@ -43,7 +43,7 @@ struct SegTree
 		cLazy[node] = 0;
 	}
 
-	void build(int node, int L, int R)
+	void build(int node=1, int L=1, int R=n)
 	{
 		if(L==R)
 		{
