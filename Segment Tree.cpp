@@ -4,7 +4,7 @@ struct data
 	int mn;
 
 	//Default Values
-	data() : mn(1e9) {};
+	data() : mn(0) {};
 };
 
 struct SegTree
@@ -13,6 +13,7 @@ struct SegTree
 	vector<data> st;
 	vector<bool> cLazy;
 	vector<int> lazy;
+	vector<int> arr ; 
 
 	void init(int n)
 	{
@@ -25,7 +26,7 @@ struct SegTree
 	//Write reqd merge functions
 	void merge(data &cur, data &l, data &r) 
 	{
-		cur.mn = min(l.mn, r.mn);
+		cur.mn = max(l.mn, r.mn);
 	}
 	
 	//Handle lazy propagation appriopriately
@@ -46,7 +47,7 @@ struct SegTree
 	{
 		if(L==R)
 		{
-			st[node].mn = 1e9;
+			st[node].mn = arr[L];
 			return;
 		}
 		int M=(L + R)/2;
